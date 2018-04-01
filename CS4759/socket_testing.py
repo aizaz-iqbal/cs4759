@@ -47,7 +47,7 @@ r3 = s.recv(2048)
 r3 = r3.decode()
 print("from response:"+r3)
 
-to = "RCPT TO: <aizaz_iqbal@hotmail.com>\r\n"
+to = "RCPT TO: <aizaztesting@gmail.com>\r\n"
 s.send(to.encode())
 r4 = s.recv(2048)
 r4 = r4.decode()
@@ -59,10 +59,10 @@ r5 = s.recv(2048)
 r5 = r5.decode()
 print("Data response: "+r5)
 
-subject = "Subject: TESt\r\n"
+subject = "Subject: TESt2\r\n"
 s.send(subject.encode())
 
-data = "Testing DAta \r\n"
+data = "Testing DAta again \r\n"
 s.send(data.encode())
 x = "\r\n"+'.'+"\r\n"
 s.send(x.encode())
