@@ -4,8 +4,8 @@ import base64
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s = ssl.wrap_socket(s,ssl_version=ssl.PROTOCOL_TLS)
-mail_server = 'imap.gmail.com'
-port = 993
+mail_server = 'pop.gmail.com'
+port = 995
 
 s.connect((mail_server,port))
 result = s.recv(2048)
@@ -15,19 +15,31 @@ print ("connection result: "+result)
 
 username = "aizaztesting@gmail.com"
 password = "StrongPassword12"
-#b64_auth = ("\x00"+username+"\x00"+password).encode()
-#b64_auth = base64.b64encode(b64_auth)
-#auth = "LOGIN ".encode()+b64_auth+"\r\n".encode()
-login = "a login aizaztesting@gmail.com StrongPassword12 \r\n"
-s.send(login.encode())
-recv_auth = s.recv(2048)
-print("AUTH response: "+recv_auth.decode())
 
-list = "a list"
+user_msg = "USER "+username+"\r\n"
+s.send(user_msg.encode())
+r = s.recv(4096)
+print(r.decode())
+pass_msg = "PASS "+password+"\r\n"
+s.send(pass_msg.encode())
+r = s.recv()
+print(r.decode())
+
+list = "LIST\r\n"
 s.send(list.encode())
-r3 = s.recv()
-r3 = r3.decode()
-print("list response: "+r3)
+r = s.recv(4096)
+print(r.decode())
+
+msg_number = input("Input message Number: ")
+msg = "RETR "+msg_number+"\r\n"
+s.send(msg.encode())
+r = s.recv(4096)
+print(r.decode())
+
+reset = "RSET\r\n"
+s.send(reset.encode())
+r = s.recv(4096)
+print(r.decode())
 
 quit = "QUIT\r\n"
 s.send(quit.encode())
