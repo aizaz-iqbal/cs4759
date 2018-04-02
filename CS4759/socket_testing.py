@@ -41,13 +41,15 @@ s.send(auth)
 recv_auth = s.recv(2048)
 print("AUTH response: "+recv_auth.decode())
 
+
 From = "MAIL FROM: <testingISFUN@yubelikethis.ca>\r\n"
 s.send(From.encode())
 r3 = s.recv(2048)
 r3 = r3.decode()
 print("from response:"+r3)
 
-to = "RCPT TO: <aizaztesting@gmail.com>\r\n"
+to_input = input("To: ")
+to = "RCPT TO: <"+to_input+">\r\n"
 s.send(to.encode())
 r4 = s.recv(2048)
 r4 = r4.decode()
@@ -59,10 +61,12 @@ r5 = s.recv(2048)
 r5 = r5.decode()
 print("Data response: "+r5)
 
-subject = "Subject: TESt2\r\n"
+subject_input = input("Subject: ")
+subject = "Subject:"+subject_input+"\r\n"
 s.send(subject.encode())
 
-data = "Testing DAta again \r\n"
+body = input("Body: ")
+data = body+"\r\n"
 s.send(data.encode())
 x = "\r\n"+'.'+"\r\n"
 s.send(x.encode())
