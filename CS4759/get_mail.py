@@ -33,13 +33,16 @@ print(r.decode())
 msg_number = input("Input message Number: ")
 msg = "RETR "+msg_number+"\r\n"
 s.send(msg.encode())
-r = s.recv(4096)
-print(r.decode())
 
-reset = "RSET\r\n"
-s.send(reset.encode())
-r = s.recv(4096)
-print(r.decode())
+while True:
+	r = s.recv(4096)
+	if not r:
+		break
+	print(r.decode())
+	
+
+
+
 
 quit = "QUIT\r\n"
 s.send(quit.encode())
