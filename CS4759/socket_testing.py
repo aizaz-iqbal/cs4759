@@ -3,6 +3,7 @@ import time
 import sys
 import base64
 import ssl
+import tkinter as tk
 
 #GUI class for taking email inputs
 class Application(tk.Frame):
@@ -76,6 +77,8 @@ class Application(tk.Frame):
         r = s.recv(2048)
         r = r.decode()
         print("QUIT response: "+r)
+        root.destroy()
+
 
 
 
@@ -115,4 +118,4 @@ root = tk.Tk()
 app = Application(master=root)
 app.master.title('compose')
 app.mainloop()
-root.destroy()
+s.close()
