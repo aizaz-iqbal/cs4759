@@ -47,11 +47,14 @@ while True:
 		break
 
 
-date = email.split("Date:")[0]
-FROM = email.split("From:")[0]
-subject = email.split("Subject:")[0]
-print(email)
-
+# date = email.split("Date:")[0]
+# FROM = email.split("From:")[0]
+# subject = email.split("Subject:")[0]
+try:
+	not_important,important_parts = email.split("Date:")
+	print(important_parts)
+except:
+	pass
 # print(date)
 # print('\n')
 # print(FROM )
