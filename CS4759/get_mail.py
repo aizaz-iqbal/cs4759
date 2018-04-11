@@ -46,20 +46,11 @@ while True:
 	if chunk[1] == '.' or chunk[0] == '.' or chunk[-1] == '\n' :
 		break
 
-
-# date = email.split("Date:")[0]
-# FROM = email.split("From:")[0]
-# subject = email.split("Subject:")[0]
 try:
 	not_important,important_parts = email.split("Date:")
 	print(important_parts)
 except:
 	pass
-# print(date)
-# print('\n')
-# print(FROM )
-# print('\n')
-# print(subject )
 
 quit = "QUIT\r\n"
 s.send(quit.encode())

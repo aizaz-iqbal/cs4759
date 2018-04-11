@@ -1,6 +1,4 @@
 import socket
-import time
-import sys
 import base64
 import ssl
 import tkinter as tk
@@ -105,7 +103,7 @@ print(tlsr)
 
 s = ssl.wrap_socket(s,ssl_version=ssl.PROTOCOL_TLS)
 #Authenticating google account
-username = "aizaztesting@gmail.com"
+username = "aizazesting@gmail.com"
 password = "StrongPassword12"
 b64_auth = ("\x00"+username+"\x00"+password).encode()
 b64_auth = base64.b64encode(b64_auth)
